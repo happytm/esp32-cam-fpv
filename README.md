@@ -1,6 +1,12 @@
 # esp32-cam-fpv
 esp32 cam digital, low latency FPV
 
+# Note: CMARS MODS:
+
+The code won't build if wlan1 is connected to wifi. Connect with wlan0 (onboard interface) through dhcpcd.conf and build with make -j4 in gs folder. You must also move components folder to gs folder since the tree is not correct in the MakeFile file.
+Then, update drivers to TL-WN722N to allow monitor mode (original drivers don't support this mode):
+https://forums.raspberrypi.com/viewtopic.php?t=297324
+
 This project uses a modified esp-camera component running on an AI Thinker board to send low-latency mjpeg video to a Raspberry PI base station with 1-2 wifi cards using packet injection and monitor mode.
 
 It uses FEC encoding (4/7 currently configured) with 1400 byte packets and it achieves quite good performance:
